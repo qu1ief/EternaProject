@@ -1,8 +1,12 @@
+using EternaProject.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddDbContext<EternaContext>(options => { options.UseSqlServer(builder.Configuration.GetConnectionString("MvcProject"));
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
