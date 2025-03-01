@@ -1,0 +1,167 @@
+﻿@using EternaProject.ViewModels
+@model BlogVm
+<main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+        <div class="container">
+            <nav class="breadcrumbs">
+                <ol>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="current">Blog</li>
+                </ol>
+            </nav>
+            <h1>Blog</h1>
+        </div>
+    </div><!-- End Page Title -->
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-8">
+
+                <!-- Blog Posts Section -->
+                <section id="blog-posts" class="blog-posts section">
+
+                    <div class="container">
+
+                        <div class="row gy-4">
+
+
+                            @foreach (var blog in Model.Blogs)
+                            {
+                                <div class="col-lg-12">
+                                    <article>
+
+                                        <div class="post-img">
+                                            <img src="~/assets/img/blog/@blog.Image" alt="" class="img-fluid">
+                                        </div>
+
+                                        <h2 class="title">
+                                            <a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id">@blog.Title</a>
+                                        </h2>
+
+                                        <div class="meta-top">
+                                            <ul>
+                                                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id">@blog.Author</a></li>
+                                                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id"><time datetime="2022-01-01">@blog.CreateDate.ToString("dd MMMM,yyyy")</time></a></li>
+                                                <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id">12 Comments</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="content">
+                                            <p>
+                                                @blog.Description
+
+                                                <div class="read-more">
+                                                    <a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id">Read More</a>
+                                                </div>
+                                        </div>
+
+                                    </article>
+                                </div>
+
+                                <!-- End post list item -->
+                            }
+
+                        </div><!-- End blog posts list -->
+
+                    </div>
+
+                </section><!-- /Blog Posts Section -->
+                <!-- Blog Pagination Section -->
+                <section id="blog-pagination" class="blog-pagination section">
+
+                    <div class="container">
+                        <div class="d-flex justify-content-center">
+                            <ul>
+                                <li><a href="#"><i class="bi bi-chevron-left"></i></a></li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#" class="active">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li>...</li>
+                                <li><a href="#">10</a></li>
+                                <li><a href="#"><i class="bi bi-chevron-right"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </section><!-- /Blog Pagination Section -->
+
+            </div>
+
+            <div class="col-lg-4 sidebar">
+
+                <div class="widgets-container">
+
+                    <!-- Search Widget -->
+                    <div class="search-widget widget-item">
+
+                        <h3 class="widget-title">Search</h3>
+                        <form action="">
+                            <input type="text">
+                            <button type="submit"><i class="bi bi-search"></i></button>
+                        </form>
+
+                    </div><!--/Search Widget -->
+                    <!-- Categories Widget -->
+                    <div class="categories-widget widget-item">
+
+                        <h3 class="widget-title">Categories</h3>
+                        <ul class="mt-3">
+                            @foreach (var category in Model.Categories)
+                            {
+                                <li><a href="#">@category.Name <span>(0)</span></a></li>
+
+                            }
+                        </ul>
+
+                    </div><!--/Categories Widget -->
+                    <!-- Recent Posts Widget -->
+                    <div class="recent-posts-widget widget-item">
+
+                        <h3 class="widget-title">Recent Posts</h3>
+
+                        @foreach (var recentBlog in Model.BlogsRecents)
+                        {
+                            <div class="post-item">
+                                <img src="~/assets/img/blog/@recentBlog.Image" alt="" class="flex-shrink-0">
+                                <div>
+                                    <h4><a asp-controller="Blog" asp-action="Details" asp-route-id="@recentBlog.Id">@recentBlog.Title</a></h4>
+                                    <time datetime="2020-01-01">@recentBlog.CreateDate.ToString("dd MMMM,yyyy")</time>
+                                </div>
+                            </div>
+
+                            <!-- End recent post item-->
+                        }
+
+                    </div><!--/Recent Posts Widget -->
+                    <!-- Tags Widget -->
+                    <div class="tags-widget widget-item">
+
+                        <h3 class="widget-title">Tags</h3>
+                        <ul>
+                            <li><a href="#">App</a></li>
+                            <li><a href="#">IT</a></li>
+                            <li><a href="#">Business</a></li>
+                            <li><a href="#">Mac</a></li>
+                            <li><a href="#">Design</a></li>
+                            <li><a href="#">Office</a></li>
+                            <li><a href="#">Creative</a></li>
+                            <li><a href="#">Studio</a></li>
+                            <li><a href="#">Smart</a></li>
+                            <li><a href="#">Tips</a></li>
+                            <li><a href="#">Marketing</a></li>
+                        </ul>
+
+                    </div><!--/Tags Widget -->
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</main>

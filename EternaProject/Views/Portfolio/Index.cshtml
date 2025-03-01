@@ -42,7 +42,7 @@
                                     <h4>@project.Title</h4>
                                     <p>@project.Descriotion</p>
                                     <a href="@project.ProjectImages.FirstOrDefault()?.Name" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                    <a asp-action="detail" asp-route-id="@project.Id"   title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                                    <a asp-controller="Portfolio" asp-action="detail" asp-route-id="@project.Id"   title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                                 </div>
                             </div>
                         </div>

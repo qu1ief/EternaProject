@@ -7,8 +7,13 @@ namespace EternaProject.Data
     {
         public DbSet<Category> Categories { get; set; }
         public DbSet<Project> Projects { get; set; }
+        public DbSet<ProjectImage> ProjectImages { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
         public EternaContext(DbContextOptions options) : base(options)
         {
         }
+
     }
 }
+
+
